@@ -9,8 +9,17 @@ const tinyImage = fs.readFileSync(path.join(publicPath, "tiny.png"));
 
 const apiServer = process.env.API_SERVER;
 
-app.get("/record", (req, res) => {
-  request.get(`${apiServer}/event`);
+app.get("/record/:name/:timestamp", (req, res) => {
+  let payload = {
+    name: req.params.name,
+    timestamp: req.params.timestamp
+  };
+
+  request({
+    url: `${apiServer}/event`,
+    method: "POST",
+    json: payload
+  });
   res.writeHead(200, { "Content-Type": "image/png" });
   res.end(tinyImage);
 });
