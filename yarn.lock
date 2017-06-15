@@ -129,7 +129,7 @@ assert-plus@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/assert-plus/-/assert-plus-0.2.0.tgz#d74e1b87e7affc0db8aadb7021f3fe48101ab234"
 
-async@^1.4.0:
+async@^1.4.0, async@^1.5.2:
   version "1.5.2"
   resolved "https://registry.yarnpkg.com/async/-/async-1.5.2.tgz#ec6a61ae56480c0c3cb241c95618e20892f9672a"
 
@@ -394,14 +394,6 @@ camelcase@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-3.0.0.tgz#32fc4b9fcdaf845fcdf7e73bb97cac2261f0ab0a"
 
-canvas@^1.6.5:
-  version "1.6.5"
-  resolved "https://registry.yarnpkg.com/canvas/-/canvas-1.6.5.tgz#557f9988f5d2c95fdc247c61a5ee43de52f6717c"
-  dependencies:
-    nan "^2.4.0"
-    parse-css-font "^2.0.2"
-    units-css "^0.4.0"
-
 caseless@~0.12.0:
   version "0.12.0"
   resolved "https://registry.yarnpkg.com/caseless/-/caseless-0.12.0.tgz#1b681c21ff84033c826543090689420d187151dc"
@@ -526,36 +518,6 @@ cryptiles@2.x.x:
   resolved "https://registry.yarnpkg.com/cryptiles/-/cryptiles-2.0.5.tgz#3bdfecdc608147c1c67202fa291e7dca59eaa3b8"
   dependencies:
     boom "2.x.x"
-
-css-font-size-keywords@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/css-font-size-keywords/-/css-font-size-keywords-1.0.0.tgz#854875ace9aca6a8d2ee0d345a44aae9bb6db6cb"
-
-css-font-stretch-keywords@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/css-font-stretch-keywords/-/css-font-stretch-keywords-1.0.1.tgz#50cee9b9ba031fb5c952d4723139f1e107b54b10"
-
-css-font-style-keywords@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/css-font-style-keywords/-/css-font-style-keywords-1.0.1.tgz#5c3532813f63b4a1de954d13cea86ab4333409e4"
-
-css-font-weight-keywords@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/css-font-weight-keywords/-/css-font-weight-keywords-1.0.0.tgz#9bc04671ac85bc724b574ef5d3ac96b0d604fd97"
-
-css-global-keywords@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/css-global-keywords/-/css-global-keywords-1.0.1.tgz#72a9aea72796d019b1d2a3252de4e5aaa37e4a69"
-
-css-list-helpers@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/css-list-helpers/-/css-list-helpers-1.0.1.tgz#fff57192202db83240c41686f919e449a7024f7d"
-  dependencies:
-    tcomb "^2.5.0"
-
-css-system-font-keywords@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/css-system-font-keywords/-/css-system-font-keywords-1.0.0.tgz#85c6f086aba4eb32c571a3086affc434b84823ed"
 
 cssom@0.3.x, "cssom@>= 0.3.2 < 0.4.0":
   version "0.3.2"
@@ -1195,10 +1157,6 @@ isexe@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/isexe/-/isexe-2.0.0.tgz#e8fbf374dc556ff8947a10dcb0572d633f2cfa10"
 
-isnumeric@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/isnumeric/-/isnumeric-0.2.0.tgz#a2347ba360de19e33d0ffd590fddf7755cbf2e64"
-
 isobject@^2.0.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/isobject/-/isobject-2.1.0.tgz#f065561096a3f1da2ef46272f815c840d87e0c89"
@@ -1661,7 +1619,7 @@ lodash@3.0.x:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-3.0.1.tgz#14d49028a38bc740241d11e2ecd57ec06d73c19a"
 
-lodash@^4.13.1, lodash@^4.14.0, lodash@^4.2.0:
+lodash@^4.13.1, lodash@^4.14.0, lodash@^4.17.4, lodash@^4.2.0:
   version "4.17.4"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
 
@@ -1781,7 +1739,7 @@ mkdirp@0.5.0:
   dependencies:
     minimist "0.0.8"
 
-mkdirp@^0.5.1:
+mkdirp@0.5.x, mkdirp@^0.5.1:
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-0.5.1.tgz#30057438eac6cf7f8c4767f38648d6697d75c903"
   dependencies:
@@ -1794,10 +1752,6 @@ ms@0.7.1:
 ms@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
-
-nan@^2.4.0:
-  version "2.6.2"
-  resolved "https://registry.yarnpkg.com/nan/-/nan-2.6.2.tgz#e4ff34e6c95fdfb5aecc08de6596f43605a7db45"
 
 natural-compare@^1.4.0:
   version "1.4.0"
@@ -1950,20 +1904,6 @@ p-map@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/p-map/-/p-map-1.1.1.tgz#05f5e4ae97a068371bc2a5cc86bfbdbc19c4ae7a"
 
-parse-css-font@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/parse-css-font/-/parse-css-font-2.0.2.tgz#7b60b060705a25a9b90b7f0ed493e5823248a652"
-  dependencies:
-    css-font-size-keywords "^1.0.0"
-    css-font-stretch-keywords "^1.0.1"
-    css-font-style-keywords "^1.0.1"
-    css-font-weight-keywords "^1.0.0"
-    css-global-keywords "^1.0.1"
-    css-list-helpers "^1.0.1"
-    css-system-font-keywords "^1.0.0"
-    tcomb "^2.5.0"
-    unquote "^1.1.0"
-
 parse-glob@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/parse-glob/-/parse-glob-3.0.4.tgz#b2c376cfb11f35513badd173ef0bb6e3a388391c"
@@ -2048,6 +1988,14 @@ pinkie@^2.0.0:
 pn@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/pn/-/pn-1.0.0.tgz#1cf5a30b0d806cd18f88fc41a6b5d4ad615b3ba9"
+
+portfinder@^1.0.13:
+  version "1.0.13"
+  resolved "https://registry.yarnpkg.com/portfinder/-/portfinder-1.0.13.tgz#bb32ecd87c27104ae6ee44b5a3ccbf0ebb1aede9"
+  dependencies:
+    async "^1.5.2"
+    debug "^2.2.0"
+    mkdirp "0.5.x"
 
 prelude-ls@~1.1.2:
   version "1.1.2"
@@ -2518,18 +2466,14 @@ supports-color@^2.0.0:
   resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-2.0.0.tgz#535d045ce6b6363fa40117084629995e9df324c7"
 
 supports-color@^3.1.2:
-  version "3.2.3"
-  resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-3.2.3.tgz#65ac0504b3954171d8a64946b2ae3cbb8a5f54f6"
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-3.1.2.tgz#72a262894d9d408b956ca05ff37b2ed8a6e2a2d5"
   dependencies:
     has-flag "^1.0.0"
 
 symbol-tree@^3.2.1:
   version "3.2.2"
   resolved "https://registry.yarnpkg.com/symbol-tree/-/symbol-tree-3.2.2.tgz#ae27db38f660a7ae2e1c3b7d1bc290819b8519e6"
-
-tcomb@^2.5.0:
-  version "2.7.0"
-  resolved "https://registry.yarnpkg.com/tcomb/-/tcomb-2.7.0.tgz#10d62958041669a5d53567b9a4ee8cde22b1c2b0"
 
 test-exclude@^4.1.1:
   version "4.1.1"
@@ -2629,20 +2573,9 @@ uglify-to-browserify@~1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/uglify-to-browserify/-/uglify-to-browserify-1.0.2.tgz#6e0924d6bda6b5afe349e39a6d632850a0f882b7"
 
-units-css@^0.4.0:
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/units-css/-/units-css-0.4.0.tgz#d6228653a51983d7c16ff28f8b9dc3b1ffed3a07"
-  dependencies:
-    isnumeric "^0.2.0"
-    viewport-dimensions "^0.2.0"
-
 unpipe@1.0.0, unpipe@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/unpipe/-/unpipe-1.0.0.tgz#b2bf4ee8514aae6165b4817829d21b2ef49904ec"
-
-unquote@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/unquote/-/unquote-1.1.0.tgz#98e1fc608b6b854c75afb1b95afc099ba69d942f"
 
 util-deprecate@~1.0.1:
   version "1.0.2"
@@ -2672,10 +2605,6 @@ verror@1.3.6:
   resolved "https://registry.yarnpkg.com/verror/-/verror-1.3.6.tgz#cff5df12946d297d2baaefaa2689e25be01c005c"
   dependencies:
     extsprintf "1.0.2"
-
-viewport-dimensions@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/viewport-dimensions/-/viewport-dimensions-0.2.0.tgz#de740747db5387fd1725f5175e91bac76afdf36c"
 
 walker@~1.0.5:
   version "1.0.7"

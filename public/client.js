@@ -11,9 +11,9 @@ function buildUrl(payload) {
   return `${o.url}/${o.name}/${o.timestamp}`;
 }
 
-function sendImage(payload, callback) {
+function sendImage(url, callback) {
   let imageElement = document.createElement("img");
-  imageElement.src = buildUrl(payload);
+  imageElement.src = url;
   imageElement.style.display = "none";
 
   imageElement.onload = function() {
@@ -28,6 +28,6 @@ function sendImage(payload, callback) {
 
 (function(window) {
   if (window.payload) {
-    sendImage(window.payload);
+    sendImage(buildUrl(window.payload));
   }
 })(window);

@@ -1,8 +1,7 @@
 const Nightmare = require("nightmare");
-const nightmare = Nightmare({ show: false });
 const rp = require("request-promise");
-
-const api = require("./api");
+const _ = require("lodash");
+const portfinder = require("portfinder");
 
 function handleError(err) {
   console.error(err);
@@ -10,29 +9,56 @@ function handleError(err) {
 }
 
 function runServer(apiPort, cb) {
-  process.env.API_SERVER = `http://localhost:${apiPort}`;
-  const server = require("./server");
-  let instance = server.listen(9998, err => {
-    cb(err, instance);
+  portfinder.getPort(function(err, serverPort) {
+    if (err) {
+      return cb(err);
+    }
+    process.env.API_SERVER = `http://localhost:${apiPort}`;
+    const server = require("./server");
+    let instance = server.listen(serverPort, err => {
+      return cb(err, instance);
+    });
+  });
+}
+
+function runApi(store, cb) {
+  portfinder.getPort(function(err, apiPort) {
+    if (err) {
+      return cb(err);
+    }
+    const api = require("./api")(store);
+    let instance = api.listen(apiPort, err => {
+      return cb(err, instance);
+    });
   });
 }
 
 describe("Using Nightmare.js", () => {
   let apiInstance;
+  let apiPort;
+  let nightmare;
   let serverInstance;
+  let serverPort;
+  let store = [];
   beforeAll(done => {
-    apiInstance = api.listen(9999, err => {
+    runApi(store, (err, instance) => {
       if (err) {
         return handleError(err);
       }
-      runServer(9999, (err, instance) => {
+      apiInstance = instance;
+      apiPort = apiInstance.address().port;
+      runServer(apiPort, (err, instance) => {
         if (err) {
           return handleError(err);
         }
         serverInstance = instance;
+        serverPort = serverInstance.address().port;
         done();
       });
     });
+  });
+  beforeEach(() => {
+    nightmare = Nightmare({ show: false });
   });
 
   afterAll(done => {
@@ -41,45 +67,55 @@ describe("Using Nightmare.js", () => {
     });
   });
 
-  //   it("using page", async () => {
-  //     let window = await nightmare
-  //       .on("console", console.log)
-  //       .goto("http://localhost:9998/init.html")
-  //       .evaluate(function() {
-  //         return window;
-  //       })
-  //       .end();
-
-  //     let response = await rp(`http://localhost:9999`);
-
-  //     let result = JSON.parse(response);
-  //     expect(result.length).toEqual(1);
-  //   });
-
-  it("uses string", async () => {
+  it("check using store", async () => {
     let timestamp = new Date().getTime().toString();
+    let url = `http://localhost:${serverPort}/record`;
     let html = `
       <html>
         <body>
         <script>
         window.payload = {
             name: 'x',
-            timestamp: ${timestamp}
+            url: '${url}',
+            timestamp: '${timestamp}'
         };
         </script>
-        <script src='http://localhost:9998/client.js'></script>
+        <script src='http://localhost:${serverPort}/client.js'></script>
+        </body>
+      </html>`;
+
+    let window = await nightmare.goto(`data:text/html,${html}`).end();
+
+    let result = _.find(store, { timestamp });
+
+    expect(result.timestamp).toEqual(timestamp);
+  });
+
+  it("check using request", async () => {
+    let timestamp = new Date().getTime().toString();
+    let url = `http://localhost:${serverPort}/record`;
+    let html = `
+      <html>
+        <body>
+        <script>
+        window.payload = {
+            name: 'x',
+            url: '${url}',
+            timestamp: '${timestamp}'
+        };
+        </script>
+        <script src='http://localhost:${serverPort}/client.js'></script>
         </body>
       </html>`;
 
     let window = await nightmare
-      .goto(`data:text/html,${html}`)
-      .on("console", console.log)
-      .evaluate(function() {
-        return window;
+      .on("console", (log, msg) => {
+        console.log(msg);
       })
+      .goto(`data:text/html,${html}`)
       .end();
 
-    let response = await rp(`http://localhost:9999/${timestamp}`);
+    let response = await rp(`http://localhost:${apiPort}/${timestamp}`);
 
     let result = JSON.parse(response);
     expect(result.timestamp).toEqual(timestamp);

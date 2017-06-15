@@ -1,4 +1,5 @@
-const api = require("./api");
+const api = require("./api")();
+const portfinder = require("portfinder");
 
 function runServer(port, cb) {
   process.env.API_SERVER = `http://localhost:${port}`;
@@ -11,14 +12,24 @@ function handleError(err) {
   process.exit(1);
 }
 
-api.listen(9999, err => {
+portfinder.getPort(function(err, apiPort) {
   if (err) {
-    handleError(err);
+    return handleError(err);
   }
-  runServer(9999, err => {
+  api.listen(apiPort, err => {
     if (err) {
-      handleError(err);
+      return handleError(err);
     }
-    console.log("running server");
+    portfinder.getPort(function(err, serverPort) {
+      if (err) {
+        return handleError(err);
+      }
+      runServer(apiPort, err => {
+        if (err) {
+          handleError(err);
+        }
+        console.log("running server");
+      });
+    });
   });
 });

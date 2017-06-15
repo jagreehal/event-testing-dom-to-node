@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node src/index",
-    "test": "jest --runInBand",
+    "test": "jest",
     "test-w": "jest --watch"
   },
   "repository": {
@@ -14,16 +14,17 @@
   "author": "Jag Reehal",
   "license": "ISC",
   "devDependencies": {
-    "canvas": "^1.6.5",
     "jest": "^20.0.4",
     "jsdom": "^11.0.0",
     "jsdom-global": "^3.0.2",
-    "nightmare": "^2.10.0",
     "prettier": "^1.4.4"
   },
   "dependencies": {
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
+    "lodash": "^4.17.4",
+    "nightmare": "^2.10.0",
+    "portfinder": "^1.0.13",
     "request": "^2.81.0",
     "request-promise": "^4.2.1"
   },

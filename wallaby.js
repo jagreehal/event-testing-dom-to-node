@@ -2,7 +2,8 @@ module.exports = function() {
   return {
     workers: {
       initial: 1,
-      regular: 1
+      regular: 1,
+      recycle: true
     },
     files: [
       "!src/**/*.spec.js",
