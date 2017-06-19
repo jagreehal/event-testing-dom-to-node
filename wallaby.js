@@ -7,14 +7,13 @@ module.exports = function() {
     },
     files: [
       "!src/**/*.spec.js",
-      "public/**/*.*",
-      "src/**/*.js",
+      "src/**/*.*",
       {
         pattern: "package.json",
         load: false
       }
     ],
-    tests: ["src/**/*.spec.js"],
+    tests: ["src/**/*.spec.js", "test/**/*.spec.js"],
     env: {
       type: "node"
     },

@@ -14,7 +14,7 @@ function runServer(apiPort, cb) {
       return cb(err);
     }
     process.env.API_SERVER = `http://localhost:${apiPort}`;
-    const server = require("./server");
+    const server = require("../src/server");
     let instance = server.listen(serverPort, err => {
       return cb(err, instance);
     });
@@ -26,7 +26,7 @@ function runApi(store, cb) {
     if (err) {
       return cb(err);
     }
-    const api = require("./api")(store);
+    const api = require("../src/api")(store);
     let instance = api.listen(apiPort, err => {
       return cb(err, instance);
     });

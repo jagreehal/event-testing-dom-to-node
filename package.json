@@ -29,6 +29,6 @@
     "request-promise": "^4.2.1"
   },
   "jest": {
-    "testRegex": "src/.*\\.spec\\.js$"
+    "testRegex": "(src|test)/.*\\.spec\\.js$"
   }
 }

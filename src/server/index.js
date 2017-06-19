@@ -4,7 +4,7 @@ const app = express();
 const fs = require("fs");
 const request = require("request");
 
-const publicPath = path.join(__dirname, "../../public");
+const publicPath = path.join(__dirname, "/public");
 const tinyImage = fs.readFileSync(path.join(publicPath, "tiny.png"));
 
 const apiServer = process.env.API_SERVER;
