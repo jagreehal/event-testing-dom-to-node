@@ -1,9 +1,9 @@
-const api = require("./api")();
+const api = require("./api/app")();
 const portfinder = require("portfinder");
 
 function runServer(port, cb) {
   process.env.API_SERVER = `http://localhost:${port}`;
-  const server = require("./server");
+  const server = require("./server/app");
   server.listen(9998, cb);
 }
 
