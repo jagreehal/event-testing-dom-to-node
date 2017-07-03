@@ -14,5 +14,8 @@
   "license": "ISC",
   "jest": {
     "testRegex": "(src)/.*\\.spec\\.js$"
+  },
+  "devDependencies": {
+    "karma": "1.7.0"
   }
 }

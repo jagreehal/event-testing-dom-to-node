@@ -8,7 +8,7 @@ const publicPath = path.join(__dirname, "/public");
 const tinyImage = fs.readFileSync(path.join(publicPath, "tiny.png"));
 
 const apiServer = process.env.API_SERVER;
-
+console.log("apiServer", apiServer);
 app.get("/record/:name/:timestamp", (req, res) => {
   let payload = {
     name: req.params.name,

@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+  server:
+    extends:
+      file: ./server/docker-compose.yml
+      service: server
+    environment:      
+      API_SERVER: "http://api"     
+    depends_on:
+      - api 
+    links:
+    - api
+  api:
+    extends:
+      file: ./api/docker-compose.yml
+      service: api

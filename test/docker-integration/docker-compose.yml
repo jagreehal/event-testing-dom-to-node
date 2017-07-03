@@ -17,3 +17,12 @@ services:
       PORT: 9999
     ports:
       - "9999:9999"
+  selenium:
+    image: selenium/standalone-chrome
+    expose:
+      - "4444"
+    ports:
+      - "4444:4444"    
+  tests:
+      
+  
