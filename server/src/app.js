@@ -1,15 +1,15 @@
-const express = require("express");
-const path = require("path");
+const express = require('express');
+const path = require('path');
 const app = express();
-const fs = require("fs");
-const request = require("request");
+const fs = require('fs');
+const request = require('request');
 
-const publicPath = path.join(__dirname, "/public");
-const tinyImage = fs.readFileSync(path.join(publicPath, "tiny.png"));
+const publicPath = path.join(__dirname, '/public');
+const tinyImage = fs.readFileSync(path.join(publicPath, 'tiny.png'));
 
 const apiServer = process.env.API_SERVER;
-console.log("apiServer", apiServer);
-app.get("/record/:name/:timestamp", (req, res) => {
+
+app.get('/record/:name/:timestamp', (req, res) => {
   let payload = {
     name: req.params.name,
     timestamp: req.params.timestamp
@@ -17,10 +17,10 @@ app.get("/record/:name/:timestamp", (req, res) => {
 
   request({
     url: `${apiServer}/event`,
-    method: "POST",
+    method: 'POST',
     json: payload
   });
-  res.writeHead(200, { "Content-Type": "image/png" });
+  res.writeHead(200, { 'Content-Type': 'image/png' });
   res.end(tinyImage);
 });
 

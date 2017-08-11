@@ -1,0 +1,24 @@
+{
+  "name": "event-testing-dom-to-node",
+  "version": "1.0.0",
+  "description": "Nightmare example",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "test_watch": "jest --watch"
+  },
+  "repository": {
+    "type": "git"
+  },
+  "author": "Jag Reehal",
+  "license": "ISC",
+  "jest": {
+    "testRegex": "(tests).*\\.spec\\.js$"
+  },
+  "dependencies": {
+    "jest": "^20.0.4",
+    "jest-cli": "^20.0.4",
+    "nightmare": "^2.10.0",
+    "request-promise": "^4.2.1"
+  }
+}

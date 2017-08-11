@@ -1,0 +1,25 @@
+version: '2'
+
+services:
+  server:
+    extends:
+      file: ../server/docker-compose.yml
+      service: server
+    environment:                    
+      API_SERVER: "http://api"     
+    depends_on:
+      - api
+  api:
+    extends:
+      file: ../api/docker-compose.yml
+      service: api
+  nightmare-tests:  
+    extends:
+      file: ./nightmare-example/docker-compose.yml
+      service: nightmare
+    environment:      
+      SERVER: "http://server"  
+      API: "http://api"
+    command: npm run test_watch      
+    depends_on:      
+      - server    

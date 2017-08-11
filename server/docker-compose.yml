@@ -3,7 +3,6 @@ version: '2'
 services:
   server:
     build: .
-    container_name: server
     command: npm run debug
     environment:      
       NODE_ENV: development

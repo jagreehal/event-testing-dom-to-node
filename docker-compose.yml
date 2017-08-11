@@ -8,10 +8,12 @@ services:
     environment:      
       API_SERVER: "http://api"     
     depends_on:
-      - api 
-    links:
-    - api
+      - api
+    ports: 
+     - "9998:80"
   api:
     extends:
       file: ./api/docker-compose.yml
       service: api
+    ports: 
+     - "9999:80"

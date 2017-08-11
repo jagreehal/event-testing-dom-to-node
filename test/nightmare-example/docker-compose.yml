@@ -1,0 +1,11 @@
+version: '2'
+
+services:
+  nightmare:
+    build: .
+    command: npm test
+    environment:      
+      SERVER: 'http://localhost:9998'
+      API: 'http://localhost:9999'      
+    volumes:
+      - ./tests:/usr/app/tests
